@@ -1,10 +1,16 @@
 <?php
 
-namespace App\Models;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CouponController;
 
-use Illuminate\Database\Eloquent\Model;
+Route::get('/', function(){ return view('dashboard'); })->name('dashboard');
 
-class Order extends Model
-{
-    protected $fillable = ['customer_id', 'total', 'status', 'notes'];
-}
+Route::resource('categories', CategoryController::class);
+Route::resource('products', ProductController::class);
+Route::resource('customers', CustomerController::class);
+Route::resource('orders', OrderController::class);
+Route::resource('coupons', CouponController::class);
